@@ -79,23 +79,31 @@ class SpotInfoController extends Controller
         Auth::loginUsingId(2);
         //取得目前登入之會員資料
         $user = Auth::user();
-        //???
+        //檢查spot_user是否有資料
         $spot = $user->spots()->find($id);
         //如果已經收藏過
         if ($spot) {
             //刪除景點總收藏
-             
+            $t = $spot->total_fav;
+            //if ($t == 0) =>例外
+            $t--;
+            $spot->total_fav = $t;
+            $spot->save();
+
             //刪除收藏紀錄=>沒收藏過
             $user->spots()->detach($id);
             $status = "成功刪除!";
         } else {
-            //取得景點資訊??
-            $spot = Spot::find($id);
+            //取得景點資訊
+            $spot_info = Spot::find($id);
             //增加景點總收藏
-
+            $t = $spot_info->total_fav;
+            $t++;
+            $spot_info->total_fav = $t;
+            $spot_info->save();
 
             //加入收藏
-            $user->spots()->save($spot);
+            $user->spots()->save($spot_info);
             $status = "成功新增!";
         }
 
