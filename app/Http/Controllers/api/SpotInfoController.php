@@ -21,6 +21,18 @@ class SpotInfoController extends Controller
     {
         $spot = Spot::orderBy('total_fav','desc')->take(10)->get();
 
+        Auth::loginUsingId(2);
+        
+        $user = Auth::user();
+
+        for ($i = 0; $i < count($spot); $i++){
+            //判斷是否有收藏
+            if ($user->spots()->find($spot[$i]->id))
+                $spot[$i]->status = true;
+            else
+                $spot[$i]->status = false;
+        }
+
         return response()->json($spot)->setEncodingOptions(JSON_UNESCAPED_UNICODE);
     }
 
@@ -29,7 +41,7 @@ class SpotInfoController extends Controller
         $user_id = User::where('email', $email)->value('id');
         
         $user_fav = User::find($user_id) -> spots;
-        
+                        
         return response()->json($user_fav)->setEncodingOptions(JSON_UNESCAPED_UNICODE);
     }
 
