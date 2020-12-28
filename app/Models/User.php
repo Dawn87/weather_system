@@ -44,4 +44,5 @@ class User extends Authenticatable
     public function spots(){
         return $this->belongsToMany('App\Models\Spot');
     }
+
 }

@@ -12,11 +12,15 @@ return [
     | as required, but they're a perfect start for most applications.
     |
     */
-
+//最初原型
     'defaults' => [
-        'guard' => 'web',
+        'guard' => 'web','api',
         'passwords' => 'users',
     ],
+//    'defaults' => [
+//        'guard' => 'web',
+//        'passwords' => 'users',
+//    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -40,12 +44,17 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-
+        //最初原型
         'api' => [
             'driver' => 'token',
-            'provider' => 'users',
+            'provider' => 'users','test',
             'hash' => false,
         ],
+//        'api' => [
+//            'driver' => 'token',
+//            'provider' => 'users',
+//            'hash' => false,
+//        ],
     ],
 
     /*
@@ -65,11 +74,18 @@ return [
     |
     */
 
+
+//原型
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => App\Models\User::class,App\Models\Test::class,
         ],
+//        'test' => [
+//            'users' => [
+//                'driver' => 'eloquent',
+//                'model' => App\Models\Test::class,
+//            ],
 
         // 'users' => [
         //     'driver' => 'database',
