@@ -22,3 +22,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/select_spots/{name}', [App\Http\Controllers\api\SpotInfoController::class, 'show']);
 //更新收藏狀態:變數傳景點id
 Route::put('/update_fav/{id}', [App\Http\Controllers\api\SpotInfoController::class, 'update']);
+
+Route::get('/fav/{username}',[App\Http\Controllers\api\SpotInfoController::class, 'favorite']);
+
+Route::get('/pop',[App\Http\Controllers\api\SpotInfoController::class, 'popular']);
+

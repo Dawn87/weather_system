@@ -8,6 +8,7 @@ use App\Models\City;
 use App\Models\Spot;
 use App\Models\User;
 use Auth;
+use DB;
 
 class SpotInfoController extends Controller
 {
@@ -16,9 +17,20 @@ class SpotInfoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function popular() //顯示popular景點
     {
-        //
+        $spot = Spot::orderBy('total_fav','desc')->take(10)->get();
+
+        return response()->json($spot)->setEncodingOptions(JSON_UNESCAPED_UNICODE);
+    }
+
+    public function favorite($email) //顯示使用者收藏景點
+    {
+        $user_id = User::where('email', $email)->value('id');
+        
+        $user_fav = User::find($user_id) -> spots;
+        
+        return response()->json($user_fav)->setEncodingOptions(JSON_UNESCAPED_UNICODE);
     }
 
     /**
