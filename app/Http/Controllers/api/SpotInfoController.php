@@ -45,6 +45,18 @@ class SpotInfoController extends Controller
         return response()->json($user_fav)->setEncodingOptions(JSON_UNESCAPED_UNICODE);
     }
 
+    public function member($name,$gender)
+    {
+        Auth::loginUsingId(1);
+        $user = Auth::user();//取得目前登入之會員資料
+        //Update原本姓名欄位的資料後save()
+        $user ->name = $name; 
+        //Update gender
+        $user ->gender = $gender;
+        $status = $user ->save();
+        return response()->json($status);
+    }
+
     /**
      * Store a newly created resource in storage.
      *

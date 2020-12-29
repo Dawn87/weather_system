@@ -27,3 +27,5 @@ Route::get('/fav/{username}',[App\Http\Controllers\api\SpotInfoController::class
 
 Route::get('/pop',[App\Http\Controllers\api\SpotInfoController::class, 'popular']);
 
+Route::get('/member/{name}/{gender}',[App\Http\Controllers\api\SpotInfoController::class, 'member']);
+
