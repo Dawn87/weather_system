@@ -40,11 +40,12 @@ class SpotInfoController extends Controller
      */
     public function show($name)
     {
+        //取得城市ID
         $city_id = City::where('name', $name)->value('id');
         //取得景點資訊
         $spot = Spot::select('id','name','info','address','image','total_fav')->where('city_id', $city_id)->get();
         //假設登入id=2的會員帳號
-        Auth::loginUsingId(2);
+        //Auth::loginUsingId(2);
         //取得目前登入之會員資料
         $user = Auth::user();
 
@@ -58,13 +59,6 @@ class SpotInfoController extends Controller
         
         return response()->json($spot)->setEncodingOptions(JSON_UNESCAPED_UNICODE);
     }
-    /*
-    
-    $spot[0]->users()->save($user);  
-     $user->spots()->value('spot_id') ==> 1
-     $user->spots()->find(1)
-     $spot[1]->status = true
-    */
 
     /**
      * Update the specified resource in storage.
@@ -76,7 +70,7 @@ class SpotInfoController extends Controller
     public function update(Request $request, $id)
     {
         //假設登入id=2的會員帳號
-        Auth::loginUsingId(2);
+        //Auth::loginUsingId(2);
         //取得目前登入之會員資料
         $user = Auth::user();
         //檢查spot_user是否有資料
