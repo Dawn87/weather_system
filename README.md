@@ -1,4 +1,29 @@
-## Excel
+# 重新建立 Laravel project
+## 還原 composer.json
+``` composer install --ignore-platform-reqs ```
+## 還原 packages.json
+``` npm install ```
+## 複製 .env.example .env
+``` cp .env.example .env ```
+## 修改 .env 檔內的設定，例如：
+```
+DB_DATABASE=YourDatabase
+DB_USERNAME=YourUserName
+DB_PASSWORD=YourPassword
+```
+##  取得 APP_KEY
+``` php artisan key:generate ```
+## 建立資料庫
+```
+php artisan migrate --seed
+php artisan db:seed --class=CitySeeder
+php artisan db:seed --class=SpotSeeder
+```
+## 啟動服務
+``` php artisan serve --port=8000 ```
+
+
+### Excel
 ```
 composer require maatwebsite/excel --ignore-platform-reqs
 ```
