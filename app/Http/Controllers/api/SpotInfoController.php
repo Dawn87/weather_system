@@ -114,4 +114,63 @@ class SpotInfoController extends Controller
     {
         //
     }
+
+    public function popular() //顯示popular景點
+    {
+        $spot = Spot::orderBy('total_fav','desc')->take(10)->get();
+
+        //Auth::loginUsingId(2);
+        
+        $user = Auth::user();
+
+        for ($i = 0; $i < count($spot); $i++){
+            //判斷是否有收藏
+            if ($user->spots()->find($spot[$i]->id))
+                $spot[$i]->status = true;
+            else
+                $spot[$i]->status = false;
+        }
+
+        return response()->json($spot)->setEncodingOptions(JSON_UNESCAPED_UNICODE);
+    }
+
+    public function favorite($email) //顯示使用者收藏景點
+    {
+        $user_id = User::where('email', $email)->value('id');
+        
+        $user_fav = User::find($user_id) -> spots;
+                        
+        return response()->json($user_fav)->setEncodingOptions(JSON_UNESCAPED_UNICODE);
+    }
+
+    public function member($name,$gender)
+    {
+        //Auth::loginUsingId(1);
+        $user = Auth::user();//取得目前登入之會員資料
+        //Update原本姓名欄位的資料後save()
+        $user ->name = $name; 
+        //Update gender
+        $user ->gender = $gender;
+        $status = $user ->save();
+        return response()->json($status);
+    }
+
+    public function showmember()
+    {
+        //Auth::loginUsingId(1);
+        $user = Auth::user();//取得目前登入之會員資料
+        
+        $useremail = $user ->email;
+
+        $username = $user ->name;
+        
+        $usergender = $user ->gender;
+       
+        $array = array('email' => $useremail,'name' => $username, 'gender' => $usergender);
+        
+        return response()->json($array)->setEncodingOptions(JSON_UNESCAPED_UNICODE);
+    
+    }
+
 }
+
