@@ -15,7 +15,7 @@ class SpotInfoController extends Controller
     {
         $spot = Spot::orderBy('total_fav','desc')->take(10)->get();
 
-        Auth::loginUsingId(2);
+        //Auth::loginUsingId(2);
         
         $user = Auth::user();
 
@@ -42,7 +42,7 @@ class SpotInfoController extends Controller
 
     public function member($name,$gender)
     {
-        Auth::loginUsingId(1);
+        //Auth::loginUsingId(1);
         $user = Auth::user();//取得目前登入之會員資料
         //Update原本姓名欄位的資料後save()
         $user ->name = $name; 
