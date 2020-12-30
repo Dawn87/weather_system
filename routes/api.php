@@ -19,6 +19,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 //查詢某城市景點資訊:變數傳城市名稱
-Route::get('/select_spots/{name}', [App\Http\Controllers\api\SpotInfoController::class, 'show']);
+Route::get('/select/{name}', [App\Http\Controllers\api\SpotInfoController::class, 'show']);
 //更新收藏狀態:變數傳景點id
-Route::put('/update_fav/{id}', [App\Http\Controllers\api\SpotInfoController::class, 'update']);
+Route::put('/update/{id}', [App\Http\Controllers\api\SpotInfoController::class, 'update']);
+
+Route::get('/fav/{username}',[App\Http\Controllers\api\SpotInfoController::class, 'favorite']);
+
+Route::get('/pop',[App\Http\Controllers\api\SpotInfoController::class, 'popular']);
+
+Route::get('/member/{name}/{gender}',[App\Http\Controllers\api\SpotInfoController::class, 'member']);
