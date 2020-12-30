@@ -17,7 +17,7 @@ class LoginController extends TestController
             $apiToken = Str::random(10);
             if ($member->update(['api_token'=>$apiToken]))
             {
-                    $member->api_token = $apiToken;
+                    $member->remember_token = $apiToken;
                     $member->save();
                     return response()->json('Imlogin', 200);
             }
