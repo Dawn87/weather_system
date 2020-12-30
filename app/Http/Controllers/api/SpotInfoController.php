@@ -21,7 +21,7 @@ class SpotInfoController extends Controller
     {
         $spot = Spot::orderBy('total_fav','desc')->take(10)->get();
 
-        Auth::loginUsingId(2);
+        //Auth::loginUsingId(2);
         
         $user = Auth::user();
 
@@ -47,7 +47,7 @@ class SpotInfoController extends Controller
 
     public function member($name,$gender)
     {
-        Auth::loginUsingId(1);
+        //Auth::loginUsingId(1);
         $user = Auth::user();//取得目前登入之會員資料
         //Update原本姓名欄位的資料後save()
         $user ->name = $name; 
@@ -80,7 +80,7 @@ class SpotInfoController extends Controller
         //取得景點資訊
         $spot = Spot::select('id','name','info','address','image','total_fav')->where('city_id', $city_id)->get();
         //假設登入id=2的會員帳號
-        Auth::loginUsingId(2);
+        //Auth::loginUsingId(2);
         //取得目前登入之會員資料
         $user = Auth::user();
 
@@ -112,7 +112,7 @@ class SpotInfoController extends Controller
     public function update(Request $request, $id)
     {
         //假設登入id=2的會員帳號
-        Auth::loginUsingId(2);
+        //Auth::loginUsingId(2);
         //取得目前登入之會員資料
         $user = Auth::user();
         //檢查spot_user是否有資料
