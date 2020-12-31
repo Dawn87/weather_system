@@ -28,12 +28,11 @@ Route::get('/fav/{username}',[App\Http\Controllers\api\SpotInfoController::class
 Route::get('/pop',[App\Http\Controllers\api\SpotInfoController::class, 'popular']);
 
 Route::get('/member/{name}/{gender}',[App\Http\Controllers\api\SpotInfoController::class, 'member']);
-<<<<<<< HEAD
+
 Route::get('/member',[App\Http\Controllers\api\SpotInfoController::class, 'showmember']);
 
-Route::post('/register', [App\Http\Controllers\TestRegisterController::class, 'register']); //註冊
-Route::post('/login', [App\Http\Controllers\TestLoginController::class, 'login']); //登入
-=======
+//Route::post('/register', [App\Http\Controllers\TestRegisterController::class, 'register']); //註冊
+//Route::post('/login', [App\Http\Controllers\TestLoginController::class, 'login']); //登入
 
 
 
@@ -41,5 +40,3 @@ Route::post('/register', [App\Http\Controllers\RegisterController::class, 'regis
 Route::post('/login', [App\Http\Controllers\LoginController::class, 'login']); //登入
 Route::post('/logout', [App\Http\Controllers\LogoutController::class, 'logout']); //登入
 
-
->>>>>>> c5f6c125cd3d42b88196fcfa9dd553fa98d3586f
