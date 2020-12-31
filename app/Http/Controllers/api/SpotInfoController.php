@@ -134,18 +134,15 @@ class SpotInfoController extends Controller
 
     public function favorite($email) //顯示使用者收藏景點
     {
-
-
+        //Auth::loginUsingId(2);
         $user_id = User::where('email', $email)->value('id');
         
-        $user_fav = User::find($user_id) -> spots -> orderBy('id','desc');
+        $user_fav = User::find($user_id) -> spots ;
 
-        
+        $sortfav = $user_fav -> sortByDesc('id');
                         
-        return response()->json($user_fav)->setEncodingOptions(JSON_UNESCAPED_UNICODE);
-
-        
-
+        return response()->json($sortfav)->setEncodingOptions(JSON_UNESCAPED_UNICODE);
+   
     }
 
     public function member($name,$gender)
