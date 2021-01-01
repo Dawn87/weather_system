@@ -27,4 +27,20 @@ Route::get('/fav/{username}',[App\Http\Controllers\api\SpotInfoController::class
 
 Route::get('/pop',[App\Http\Controllers\api\SpotInfoController::class, 'popular']);
 
+<<<<<<< HEAD
 Route::get('/member/{name}/{gender}',[App\Http\Controllers\api\SpotInfoController::class, 'member']);
+=======
+Route::post('/member/{name}/{gender}',[App\Http\Controllers\api\SpotInfoController::class, 'member']);
+
+Route::get('/member',[App\Http\Controllers\api\SpotInfoController::class, 'showmember']);
+
+//Route::post('/register', [App\Http\Controllers\TestRegisterController::class, 'register']); //註冊
+//Route::post('/login', [App\Http\Controllers\TestLoginController::class, 'login']); //登入
+
+
+
+Route::post('/register', [App\Http\Controllers\RegisterController::class, 'register']); //註冊
+Route::post('/login', [App\Http\Controllers\LoginController::class, 'login']); //登入
+Route::post('/logout', [App\Http\Controllers\LogoutController::class, 'logout']); //登入
+
+>>>>>>> Johnny
