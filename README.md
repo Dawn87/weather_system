@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # 重新建立 Laravel project
 ## 還原 composer.json
 ``` composer install --ignore-platform-reqs ```
@@ -23,11 +22,7 @@ php artisan db:seed --class=SpotSeeder
 ## 啟動服務
 ``` php artisan serve --port=8000 ```
 
-
-### Excel
-=======
-## Laravel Excel 
->>>>>>> c5f6c125cd3d42b88196fcfa9dd553fa98d3586f
+### Laravel Excel 
 ```
 composer require maatwebsite/excel --ignore-platform-reqs
 ```
