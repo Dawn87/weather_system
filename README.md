@@ -22,6 +22,9 @@ php artisan db:seed --class=SpotSeeder
 ## 啟動服務
 ``` php artisan serve --port=8000 ```
 
+
+
+
 ### Laravel Excel 
 ```
 composer require maatwebsite/excel --ignore-platform-reqs
