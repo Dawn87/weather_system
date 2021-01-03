@@ -36,7 +36,7 @@ class SpotInfoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($name)
+    public function show($name,$email)
     {
         //取得城市ID
         $city_id = City::where('name', $name)->value('id');
@@ -48,7 +48,8 @@ class SpotInfoController extends Controller
         //假設登入id=2的會員帳號
         //Auth::loginUsingId(2);
         //取得目前登入之會員資料
-        $user = Auth::user();
+        $user_id = User::where('email', $email)->value('id');
+        $user = User::find($user_id);
 
         for ($i = 0; $i < count($spot); $i++){
             //判斷是否有收藏
@@ -70,12 +71,13 @@ class SpotInfoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id, $email)
     {
         //假設登入id=2的會員帳號
         //Auth::loginUsingId(2);
         //取得目前登入之會員資料
-        $user = Auth::user();
+        $user_id = User::where('email', $email)->value('id');
+        $user = User::find($user_id);
         //檢查spot_user是否有資料
         $spot = $user->spots()->find($id);
         //如果已經收藏過
@@ -118,7 +120,7 @@ class SpotInfoController extends Controller
         //
     }
 
-    public function popular() //顯示popular景點
+    public function popular($email) //顯示popular景點
     {
         $spot = Spot::orderBy('total_fav','desc')->take(10)->get();
         
@@ -133,7 +135,8 @@ class SpotInfoController extends Controller
         
         //Auth::loginUsingId(2);
 
-        $user = Auth::user();
+        $user_id = User::where('email', $email)->value('id');
+        $user = User::find($user_id);
 
         for ($i = 0; $i < count($spot); $i++){
             //判斷是否有收藏
@@ -169,10 +172,11 @@ class SpotInfoController extends Controller
 
 
 
-    public function member($name,$gender)
+    public function member($name,$gender,$email)
     {
         //Auth::loginUsingId(1);
-        $user = Auth::user();//取得目前登入之會員資料
+        $user_id = User::where('email', $email)->value('id');
+        $user = User::find($user_id);//取得目前登入之會員資料
         //Update原本姓名欄位的資料後save()
         $user ->name = $name; 
         //Update gender
@@ -181,10 +185,11 @@ class SpotInfoController extends Controller
         return response()->json($status);
     }
 
-    public function showmember()
+    public function showmember($email)
     {
         //Auth::loginUsingId(1);
-        $user = Auth::user();//取得目前登入之會員資料
+        $user_id = User::where('email', $email)->value('id');
+        $user = User::find($user_id);//取得目前登入之會員資料
         
         $useremail = $user ->email;
 
