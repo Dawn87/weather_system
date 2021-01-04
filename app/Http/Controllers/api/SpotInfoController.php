@@ -53,7 +53,7 @@ class SpotInfoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id, $email)
+    public function update($id, $email)
     {
         //假設登入id=2的會員帳號
         //Auth::loginUsingId(2);
