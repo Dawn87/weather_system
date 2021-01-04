@@ -98,8 +98,10 @@ class SpotInfoController extends Controller
         for($i = 0; $i < count($spot); $i++)
         {
             $city_id = $spot[$i] ->city_id;
-            $cityweather= City::find($city_id) ->weather;
-            $citydegree = City::find($city_id) ->degrees; 
+            $city_name = City::find($city_id)->name;
+            $cityweather= City::find($city_id)->weather;
+            $citydegree = City::find($city_id)->degrees; 
+            $spot[$i]->city_name = $city_name;
             $spot[$i]->weather =  $cityweather;
             $spot[$i]->degree =  $citydegree;
         }
@@ -131,8 +133,10 @@ class SpotInfoController extends Controller
         for($i = 0; $i < count($sortfav); $i++)
         {
             $city_id = $sortfav[$i] ->city_id;
+            $city_name = City::find($city_id)->name;
             $cityweather= City::find($city_id) ->weather;
             $citydegree = City::find($city_id) ->degrees; 
+            $sortfav[$i]->city_name = $city_name;
             $sortfav[$i]->weather =  $cityweather;
             $sortfav[$i]->degree =  $citydegree;
             $sortfav[$i]->status = true;
