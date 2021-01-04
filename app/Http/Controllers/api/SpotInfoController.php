@@ -135,6 +135,7 @@ class SpotInfoController extends Controller
             $citydegree = City::find($city_id) ->degrees; 
             $sortfav[$i]->weather =  $cityweather;
             $sortfav[$i]->degree =  $citydegree;
+            $sortfav[$i]->status = true;
         }
                         
         return response()->json($sortfav)->setEncodingOptions(JSON_UNESCAPED_UNICODE);
