@@ -19,28 +19,17 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 //查詢某城市景點資訊:變數傳城市名稱
-Route::get('/select/{name}', [App\Http\Controllers\api\SpotInfoController::class, 'show']);
+Route::get('/select/{name}/{email}', [App\Http\Controllers\api\SpotInfoController::class, 'show']);
 //更新收藏狀態:變數傳景點id
-Route::put('/update/{id}', [App\Http\Controllers\api\SpotInfoController::class, 'update']);
+Route::put('/update/{id}/{email}', [App\Http\Controllers\api\SpotInfoController::class, 'update']);
 
-Route::get('/fav/{username}',[App\Http\Controllers\api\SpotInfoController::class, 'favorite']);
+Route::get('/fav/{email}',[App\Http\Controllers\api\SpotInfoController::class, 'favorite']);
 
-Route::get('/pop',[App\Http\Controllers\api\SpotInfoController::class, 'popular']);
+Route::get('/pop/{email}',[App\Http\Controllers\api\SpotInfoController::class, 'popular']);
 
-<<<<<<< HEAD
-Route::get('/member/{name}/{gender}',[App\Http\Controllers\api\SpotInfoController::class, 'member']);
-=======
-Route::post('/member/{name}/{gender}',[App\Http\Controllers\api\SpotInfoController::class, 'member']);
-
-Route::get('/member',[App\Http\Controllers\api\SpotInfoController::class, 'showmember']);
-
-//Route::post('/register', [App\Http\Controllers\TestRegisterController::class, 'register']); //註冊
-//Route::post('/login', [App\Http\Controllers\TestLoginController::class, 'login']); //登入
-
-
+Route::post('/member/{name}/{gender}/{email}',[App\Http\Controllers\api\SpotInfoController::class, 'member']);
 
 Route::post('/register', [App\Http\Controllers\RegisterController::class, 'register']); //註冊
 Route::post('/login', [App\Http\Controllers\LoginController::class, 'login']); //登入
-Route::post('/logout', [App\Http\Controllers\LogoutController::class, 'logout']); //登入
+Route::post('/logout', [App\Http\Controllers\LogoutController::class, 'logout']); //登出
 
->>>>>>> Johnny
