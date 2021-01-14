@@ -14,7 +14,7 @@ class Spot extends Model
     }
 
     public function users(){
-        return $this->belongsToMany('App\Models\User');
+        return $this->belongsToMany('App\Models\User')->withTimestamps();
     }
 
     protected $fillable = ['name', 'info', 'address', 'image', 'city_id'];
